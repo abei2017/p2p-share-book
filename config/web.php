@@ -48,6 +48,14 @@ $config = [
         ],
         */
     ],
+    'modules' => [
+        'pc' => [
+            'class' => 'app\modules\pc\Module',
+        ],
+        'book' => [
+            'class' => 'app\modules\book\Module',
+        ],
+    ],
     'params' => $params,
 ];
 
