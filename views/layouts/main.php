@@ -30,11 +30,12 @@ AppAsset::register($this);
 
 <div class="wrap">
     <ul class="layui-nav" lay-filter="">
-        <li class="layui-nav-item layui-this"><a href="">首页</a></li>
-        <li class="layui-nav-item"><a href="">书架</a></li>
-        <li class="layui-nav-item"><a href="">读后感</a></li>
-        <li class="layui-nav-item "><a href="">我要加入</a></li>
-        <li class="layui-nav-item" style="float:right;"><a href="<?= Url::to(['/site/login']);?>">登录 / 注册</a></li>
+        <li class="layui-nav-item layui-this"><a href="<?= Url::to(['/site/index']);?>">首页</a></li>
+        <li class="layui-nav-item"><a href="<?= Url::to(['/book/index']);?>">书架</a></li>
+        <li class="layui-nav-item"><a href="<?= Url::to(['/article/index']);?>">读后感</a></li>
+        <li class="layui-nav-item "><a href="<?= Url::to(['/site/join']);?>">我要加入</a></li>
+        <li class="layui-nav-item" style="float:right;"><a href="<?= Url::to(['/site/register']);?>">注册新用户</a></li>
+        <li class="layui-nav-item" style="float:right;"><a href="<?= Url::to(['/site/login']);?>">登录</a></li>
     </ul>
     <div class="container">
         <?= $content ?>

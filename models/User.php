@@ -3,6 +3,9 @@
 namespace app\models;
 
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
+use yii\web\IdentityInterface;
 
 /**
  * This is the model class for table "{{%user}}".
@@ -12,7 +15,7 @@ use Yii;
  * @property integer $created_at
  * @property integer $updated_at
  */
-class User extends \yii\db\ActiveRecord
+class User extends ActiveRecord implements IdentityInterface
 {
     /**
      * @inheritdoc
@@ -28,9 +31,8 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['open_id', 'created_at', 'updated_at'], 'required'],
-            [['created_at', 'updated_at'], 'integer'],
-            [['open_id'], 'string', 'max' => 36],
+            [['username','password','phone'],'required'],
+            [['username','phone'],'unique']
         ];
     }
 
@@ -41,9 +43,44 @@ class User extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'open_id' => 'Open ID',
-            'created_at' => 'Created At',
-            'updated_at' => 'Updated At',
+
         ];
+    }
+
+    public function behaviors(){
+        return [
+            [
+                'class'=>TimestampBehavior::className(),
+                'attributes'=>[
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at','updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['created_at'],
+                ]
+            ]
+        ];
+    }
+
+    public static function findIdentity($id)
+    {
+        return User::findOne($id);
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null)
+    {
+        // TODO: Implement findIdentityByAccessToken() method.
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getAuthKey()
+    {
+        // TODO: Implement getAuthKey() method.
+    }
+
+    public function validateAuthKey($authKey)
+    {
+        // TODO: Implement validateAuthKey() method.
     }
 }

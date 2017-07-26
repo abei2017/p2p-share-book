@@ -5,5 +5,5 @@
 $this->title = '首页';
 ?>
 <div class="site-index">
-
+    
 </div>

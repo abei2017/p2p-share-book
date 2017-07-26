@@ -26,7 +26,7 @@ class AppAsset extends AssetBundle
         'layui/layui.js'
     ];
     public $depends = [
-
+        'yii\web\JqueryAsset',
     ];
 
     public $jsOptions = [

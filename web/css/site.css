@@ -1,1 +1,9 @@
-body {margin:0;padding:0;list-style:none}
+body {margin:0;padding:0;list-style:none;background:#F2F2F2}
+
+/* common */
+h1,h2,h3,h4,h5,h6,ul,li,p {margin:0;padding:0;list-style:none}
+
+/* register */
+.site-register {}
+.site-register .register {margin:50px auto;width:400px;padding:35px;background:#FFFFFF;}
+.site-register .register h1 {margin-bottom:20px;font-size:32px;text-align:center;}

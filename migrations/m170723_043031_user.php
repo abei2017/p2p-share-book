@@ -15,6 +15,8 @@ class m170723_043031_user extends Migration
             'created_at'=>$this->integer(11)->notNull()->comment('生成时间'),
             'updated_at'=>$this->integer(11)->notNull()->comment('更新时间'),
         ]);
+
+        $this->createIndex('index_username','{{%user}}','username',true);
     }
 
     public function safeDown()
